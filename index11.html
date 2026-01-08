@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TrustedDukaan – Local Shops. Smart System.</title>
+
+<style>
+:root{
+  --accent: linear-gradient(135deg,#22ffe3,#00c2ff);
+  --glass: rgba(255,255,255,0.1);
+  --border: rgba(255,255,255,0.18);
+  --border-theme: #22ffe3;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family: Inter, system-ui, sans-serif;
+  background: radial-gradient(circle at top,#0f2027,#020617);
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* ORNAMENTS */
+.orb{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(140px);
+  opacity:.45;
+  z-index:-1;
+}
+.orb.one{width:420px;height:420px;background:#22ffe3;top:-120px;left:-120px}
+.orb.two{width:320px;height:320px;background:#00c2ff;top:40%;right:-120px}
+.orb.three{width:280px;height:280px;background:#6366f1;bottom:-120px;left:30%}
+
+/* GLOBAL */
+.container{max-width:1200px;margin:auto;padding:0 24px}
+.glass{
+  background:var(--glass);
+  backdrop-filter:blur(18px);
+  border:1px solid var(--border);
+  /* border:1px solid var(--border-theme); */
+  border-radius:20px;
+}
+section{padding:120px 0}
+h1,h2,h3{line-height:1.2}
+p{opacity:.85}
+
+/* NAVBAR */
+.navbar{
+  position:fixed;
+  top:20px;
+  width:100%;
+  z-index:10;
+}
+.nav-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:16px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo{
+  font-size:22px;
+  font-weight:700;
+}
+.logo span{
+  background:var(--accent);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+nav a{
+  color:#cbd5e1;
+  margin:0 14px;
+  text-decoration:none;
+}
+nav a:hover{color:#fff}
+
+/* BUTTONS */
+.btn{
+  padding:12px 24px;
+  border-radius:999px;
+  font-weight:600;
+  cursor:pointer;
+}
+.btn-primary{
+  background:var(--accent);
+  border:none;
+}
+.btn-outline{
+  background:transparent;
+  border:1px solid #2fb3a1;
+  color:#22ffe3;
+}
+
+/* HERO */
+.hero{
+  padding:200px 0 140px;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:64px;
+}
+.badge{
+  display:inline-block;
+  padding:6px 16px;
+  border-radius:999px;
+  background:rgba(34,255,227,.15);
+  margin-bottom:18px;
+}
+.hero h1 span{
+  background:var(--accent);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.hero-actions{margin-top:32px}
+.hero-actions .btn{margin-right:16px}
+
+/* HERO CARD */
+.hero-card{padding:32px}
+.hero-card ul{margin-top:16px}
+.hero-card li{list-style:none;margin:10px 0}
+
+/* WHY */
+.compare{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:32px;
+  margin-top:64px;
+}
+.compare-card{padding:32px}
+.compare-card ul{margin-top:16px}
+.compare-card li{margin:10px 0}
+
+/* FEATURES */
+.dark{background:rgba(0,0,0,.35)}
+.feature-grid{
+  margin-top:64px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:24px;
+}
+.feature{padding:28px;text-align:center}
+
+/* OS */
+.timeline{
+  max-width:620px;
+  margin:48px auto 0;
+}
+.step{padding:18px;margin:14px 0}
+
+/* PRICING */
+.pricing{
+  margin-top:64px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:32px;
+}
+.price-card{padding:36px;text-align:center}
+.price{
+  font-size:34px;
+  margin:16px 0;
+  background:var(--accent);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.highlight{
+  box-shadow:0 0 50px rgba(34,255,227,.4);
+}
+
+/* FOOTER */
+footer{
+  padding:60px 0;
+  text-align:center;
+  opacity:.65;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .compare{grid-template-columns:1fr}
+  nav{display:none}
+}
+</style>
+</head>
+
+<body>
+
+<div class="orb one"></div>
+<div class="orb two"></div>
+<div class="orb three"></div>
+
+<header class="navbar">
+  <div class="nav-inner glass">
+    <div class="logo">Trusted<span>Dukaan</span></div>
+    <nav>
+      <a href="#why">Why</a>
+      <a href="#features">Features</a>
+      <a href="#os">Shop OS</a>
+      <a href="#pricing">Pricing</a>
+    </nav>
+    <button class="btn btn-primary">Join Waitlist</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="badge">🇮🇳 Built for Local India</span>
+      <h1>
+        The Smart Commerce Platform<br>
+        for <span>Local Shopkeepers</span>
+      </h1>
+      <p style="margin-top:20px">
+        TrustedDukaan connects nearby customers with trusted local shops,
+        while giving shopkeepers a complete digital operating system.
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn-primary">I’m a Shopkeeper</button>
+        <button class="btn btn-outline">I’m a Customer</button>
+      </div>
+    </div>
+
+    <div class="hero-card glass">
+      <h3>📍 Local-First Marketplace</h3>
+      <p style="margin-top:12px">
+        Only nearby shops are visible. No big sellers. No unfair competition.
+      </p>
+      <ul>
+        <li>✔ Online & offline sales</li>
+        <li>✔ Inventory & stock alerts</li>
+        <li>✔ COD & store pickup</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="container">
+    <h2>Why TrustedDukaan?</h2>
+    <p style="margin-top:12px">
+      Local shops power India’s economy — but remain invisible online.
+    </p>
+
+    <div class="compare">
+      <div class="compare-card glass">
+        <h3>❌ Today</h3>
+        <ul>
+          <li>No digital presence</li>
+          <li>Manual stock tracking</li>
+          <li>No customer insights</li>
+          <li>Dependent on big platforms</li>
+        </ul>
+      </div>
+
+      <div class="compare-card glass highlight">
+        <h3>✅ With TrustedDukaan</h3>
+        <ul>
+          <li>Nearby customer discovery</li>
+          <li>Auto inventory management</li>
+          <li>Online + offline sales</li>
+          <li>Full business control</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features" class="dark">
+  <div class="container">
+    <h2>Powerful Features</h2>
+    <div class="feature-grid">
+      <div class="feature glass">📍 Nearby Shop Discovery</div>
+      <div class="feature glass">🛒 Online Orders (COD)</div>
+      <div class="feature glass">🏪 Offline Sales Entry</div>
+      <div class="feature glass">📦 Inventory Control</div>
+      <div class="feature glass">🔔 Low Stock Alerts</div>
+      <div class="feature glass">📊 Sales Reports</div>
+      <div class="feature glass">👥 Staff Management</div>
+      <div class="feature glass">📱 Mobile Friendly</div>
+    </div>
+  </div>
+</section>
+
+<section id="os">
+  <div class="container">
+    <h2>Shop Operating System</h2>
+    <p style="margin-top:12px">
+      Everything needed to convert a local dukaan into a smart shop.
+    </p>
+
+    <div class="timeline">
+      <div class="step glass">Register your shop</div>
+      <div class="step glass">Add products & pricing</div>
+      <div class="step glass">Manage stock automatically</div>
+      <div class="step glass">Accept online & offline orders</div>
+      <div class="step glass">Track growth digitally</div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="dark">
+  <div class="container">
+    <h2>Simple Pricing</h2>
+
+    <div class="pricing">
+      <div class="price-card glass">
+        <h3>Starter</h3>
+        <p class="price">₹0</p>
+        <p>Basic shop listing & inventory</p>
+      </div>
+
+      <div class="price-card glass highlight">
+        <h3>Smart Shop</h3>
+        <p class="price">₹299 / month</p>
+        <p>Online orders, alerts & analytics</p>
+      </div>
+
+      <div class="price-card glass">
+        <h3>Pro</h3>
+        <p class="price">₹599 / month</p>
+        <p>Staff access & advanced reports</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2026 TrustedDukaan.in</p>
+    <p>Designed & built by a Full-Stack Developer</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll("a").forEach(a=>{
+  a.addEventListener("click",e=>{
+    e.preventDefault();
+    document.querySelector(a.getAttribute("href"))?.scrollIntoView({behavior:"smooth"});
+  });
+});
+</script>
+
+</body>
+</html>
+
+<!-- Turn Your Local Shop into a Smart Shop
+TrustedDukaan connects nearby customers with trusted local shopkeepers. Sell online, manage inventory, track sales, and grow digitally. -->

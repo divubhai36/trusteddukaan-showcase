@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TrustedDukaan – Local Shops. Smart System.</title>
+
+<style>
+:root{
+  --accent: linear-gradient(135deg,#22ffe3,#00c2ff);
+  --accent-soft: rgba(34,255,227,.15);
+  --glass: rgba(255,255,255,.08);
+  --border: rgba(255,255,255,.18);
+  --theme: #22ffe3;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family: Inter, system-ui, sans-serif;
+  background: radial-gradient(circle at top,#0f2027,#020617);
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* ================= ORNAMENTS ================= */
+.orb{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(140px);
+  opacity:.45;
+  z-index:-1;
+}
+.orb.one{width:420px;height:420px;background:#22ffe3;top:-120px;left:-120px}
+.orb.two{width:320px;height:320px;background:#00c2ff;top:45%;right:-120px}
+.orb.three{width:280px;height:280px;background:#6366f1;bottom:-120px;left:35%}
+
+/* ================= GLOBAL ================= */
+.container{max-width:1200px;margin:auto;padding:0 24px}
+.glass{
+  background: rgba(255,255,255,0.05); /* reduced opacity */
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 18px;
+  box-shadow: none; /* NO shadow by default */
+  transition: box-shadow .25s ease, transform .25s ease;
+}
+
+/* shadow ONLY on hover */
+.glass:hover{
+  box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+  transform: translateY(-3px);
+}
+
+section{padding:120px 0}
+h1,h2,h3{line-height:1.15}
+p{opacity:.85}
+
+/* ================= ANIMATIONS ================= */
+.fade-up{
+  opacity:0;
+  transform:translateY(30px);
+  animation:fadeUp .9s ease forwards;
+}
+.delay-1{animation-delay:.15s}
+.delay-2{animation-delay:.3s}
+.delay-3{animation-delay:.45s}
+
+@keyframes fadeUp{
+  to{opacity:1;transform:none}
+}
+
+.float{
+  animation:float 6s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+  position:fixed;
+  top:20px;
+  width:100%;
+  z-index:10;
+}
+.nav-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:16px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo{font-size:22px;font-weight:700}
+.logo span{
+  background:var(--accent);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+nav a{
+  color:#cbd5e1;
+  margin:0 14px;
+  text-decoration:none;
+  font-size:14px;
+}
+nav a:hover{color:#fff}
+
+/* ================= BUTTONS ================= */
+.btn{
+  padding:12px 26px;
+  border-radius:999px;
+  font-weight:600;
+  cursor:pointer;
+}
+.btn-primary{
+  background:var(--accent);
+  border:none;
+}
+.btn-outline{
+  background:transparent;
+  border:1px solid #22ffe3;
+  color:#22ffe3;
+}
+
+/* ================= HERO ================= */
+.hero{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding:250px 0 0px; */
+  min-height: 100vh;
+
+}
+.hero-grid{
+  /* border: 1px solid red; */
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:72px;
+}
+.badge{
+  display:inline-block;
+  padding:6px 16px;
+  border-radius:999px;
+  background:var(--accent-soft);
+  margin-bottom:18px;
+  font-size:13px;
+}
+.hero h1 span{
+  background:var(--accent);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.hero-actions{margin-top:36px}
+.hero-actions .btn{margin-right:16px}
+
+/* HERO CARD */
+.hero-card{padding:34px}
+.hero-card ul{margin-top:18px}
+.hero-card li{list-style:none;margin:12px 0}
+
+/* ================= TRUST ================= */
+.trust{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:24px;
+  margin-top:60px;
+}
+.trust div{
+  padding:20px;
+  text-align:center;
+  font-size:14px;
+  opacity:.8;
+}
+
+/* ================= WHY ================= */
+.compare{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:36px;
+  margin-top:72px;
+}
+.compare-card{padding:36px}
+.compare-card ul{margin-top:20px}
+.compare-card li{margin:12px 0}
+
+/* ================= FEATURES ================= */
+.dark{background:rgba(0,0,0,.35)}
+.feature-grid{
+  margin-top:72px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:26px;
+}
+.feature{
+  padding:30px;
+  transition:.3s ease;
+}
+.feature:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 50px rgba(0,0,0,.35);
+}
+
+/* ================= SHOP OS ================= */
+.timeline{
+  max-width:640px;
+  margin:56px auto 0;
+}
+.step{
+  padding:20px;
+  margin:16px 0;
+  position:relative;
+}
+
+/* ================= PRICING ================= */
+.pricing{
+  margin-top:72px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:36px;
+}
+.price-card{
+  padding:42px 36px;
+  text-align:center;
+  position:relative;
+}
+.badge-offer{
+  position:absolute;
+  top:-14px;
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--accent);
+  padding:6px 14px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:600;
+}
+.price-old{
+  text-decoration:line-through;
+  opacity:.5;
+}
+.price{
+  font-size:36px;
+  margin:12px 0;
+  background:var(--accent);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.highlight{
+  transform:scale(1.00);
+  border: 1px solid #22ffe268;
+}
+.highlight:hover{
+  box-shadow:0 0 60px rgba(34, 255, 226, 0.112);
+  border: 1px solid var(--theme);
+  transform: translateY(-3px);
+}
+
+/* ================= FOOTER ================= */
+footer{
+  padding:70px 0;
+  text-align:center;
+  opacity:.65;
+  font-size:14px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .compare{grid-template-columns:1fr}
+  nav{display:none}
+}
+</style>
+</head>
+
+<body>
+
+<div class="orb one"></div>
+<div class="orb two"></div>
+<div class="orb three"></div>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="nav-inner glass fade-up">
+    <div class="logo">Trusted<span>Dukaan</span></div>
+    <nav>
+      <a href="#why">Why</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+    </nav>
+    <button class="btn btn-primary">Join Waitlist</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="fade-up">
+      <span class="badge">🇮🇳 Built for Local India</span>
+      <h1>
+        The Smart Commerce Platform<br>
+        for <span>Local Shopkeepers</span>
+      </h1>
+      <p style="margin-top:22px">
+        TrustedDukaan helps nearby customers discover trusted local shops
+        while giving shopkeepers a powerful digital operating system.
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn-primary">Start for Free</button>
+        <button class="btn btn-outline">View Demo</button>
+      </div>
+
+
+    </div>
+
+    <div class="hero-card glass float fade-up delay-2">
+      <h3>🏪 Shop Operating System</h3>
+      <p style="margin-top:14px">
+        Everything you need to run a modern local shop.
+      </p>
+      <ul>
+        <li>✔ Inventory & stock alerts</li>
+        <li>✔ COD & store pickup</li>
+        <li>✔ Sales & profit reports</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="container fade-up">
+    <h2>Why TrustedDukaan?</h2>
+    <p style="margin-top:14px">
+      India runs on local shops — but technology hasn’t caught up yet.
+    </p>
+
+    <div class="compare">
+      <div class="compare-card glass">
+        <h3>❌ Traditional Shops</h3>
+        <ul>
+          <li>Manual stock & billing</li>
+          <li>No online visibility</li>
+          <li>No customer data</li>
+        </ul>
+      </div>
+
+      <div class="compare-card glass highlight">
+        <h3>✅ TrustedDukaan Shops</h3>
+        <ul>
+          <li>Nearby online discovery</li>
+          <li>Smart inventory system</li>
+          <li>Unified sales dashboard</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="dark">
+  <div class="container fade-up">
+    <h2>Core Features</h2>
+
+    <div class="feature-grid">
+      <div class="feature glass">📍 Nearby Shop Discovery</div>
+      <div class="feature glass">🛒 Online Orders (COD)</div>
+      <div class="feature glass">🏪 Offline Sales Entry</div>
+      <div class="feature glass">📦 Inventory Management</div>
+      <div class="feature glass">🔔 Low Stock Alerts</div>
+      <div class="feature glass">📊 Sales & Profit Reports</div>
+      <div class="feature glass">👥 Staff Accounts</div>
+      <div class="feature glass">📱 Mobile Friendly</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container fade-up">
+    <h2>Simple & Transparent Pricing</h2>
+    <p style="margin-top:14px">
+      No commission. No hidden charges.
+    </p>
+
+    <div class="pricing">
+      <div class="price-card glass">
+        <h3>Starter</h3>
+        <p class="price">₹0</p>
+        <p>Perfect to get started</p>
+      </div>
+
+      <div class="price-card glass highlight">
+        <div class="badge-offer">50% OFF</div>
+        <h3>Smart Shop</h3>
+        <p class="price-old">₹599</p>
+        <p class="price">₹299 / month</p>
+        <p>Most popular for growing shops</p>
+      </div>
+
+      <div class="price-card glass">
+        <div class="badge-offer">Intro Offer</div>
+        <h3>Pro</h3>
+        <p class="price-old">₹999</p>
+        <p class="price">₹599 / month</p>
+        <p>For multi-staff operations</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2026 TrustedDukaan.in</p>
+    <p>Managed by Divyesh Rupareliya</p>
+  </div>
+</footer>
+
+</body>
+</html>
